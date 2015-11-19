@@ -11,16 +11,19 @@ Native SDKs that you use to send us user activity and that we use to deliver per
 
 1. Download the SDK
 
-2. Add the SDK to your project by dragging the [file a] and the [file b] you downloaded into your Xcode project folder target.  Make sure the "Copy items to destination's group folder" checkbox is checked
+2. Add the SDK to your project by dragging the libNotifySDK.a and the NotifyResources.bundle you downloaded into your Xcode project folder target.  Make sure the "Copy items to destination's group folder" checkbox is checked
 
-3. Add the dependencies. Click on Targets -> Your app name -> then the ‘Build Phases’ tab. Expand ‘Link Binary with Libraries’. Click the + button on the bottom left of the ‘Link Binary with Libraries’ section and add the following libraries:
+3. Add NotifyResources.bundle to the ‘Copy Bundle Resources’. Click on Targets -> Your app name -> then the ‘Build Phases’ tab. Expand ‘Copy Bundle Resources’. Click the + button on the bottom left of the ‘Copy Bundle Resources’ section and add the following bundle resources:
+ * NotifyResources.bundle
+
+4. Add the dependencies. Click on Targets -> Your app name -> then the ‘Build Phases’ tab. Expand ‘Link Binary with Libraries’. Click the + button on the bottom left of the ‘Link Binary with Libraries’ section and add the following libraries:
   * Accelerate.framework
   * MediaPlayer.framework
   * Accounts.framework
   * libstdc++.dylib
   * SystemConfiguration.framework
 
-4. Set the -objc linker flag. 
+5. Set the -objc linker flag. 
 
 ##3.2 Basic Setup (Configuration) 
 The Notify.io SDK uses a .plist configuration file named NotifyConfig.plist to manage your production and development application profiles.  Once you have installed the SDK create an NotifyConfig.plist file.  

@@ -279,13 +279,14 @@ Here is an example of setting the user’s email address and gender.
 
 Swift
 ```swift
-let test_dic: [String:String] = ["email":"somename@somedomain.com,”gender”:”female”]
-NotifySwift.getInstance().addUserAttribute(test_dic)
+let attr_dict: [String:String] = ["email":"somename@somedomain.com,”gender”:”female”]
+NotifySwift.getInstance().addUserAttribute(attr_dict)
 ```
 
 Objective C
 ```objectivec
-[[Notify getInstance] addUserAttribute:@{@"email":@"somename@somedomain.com,@”gender”:@”female”}];
+NSDictionary *attr_dict = @{@"email":@"somename@somedomain.com,@”gender”:@”female”}
+[[Notify getInstance] addUserAttribute:attr_dict];
 ```
 
 ##3.12 The user id of the Currently Logged in User

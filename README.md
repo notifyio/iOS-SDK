@@ -95,9 +95,9 @@ Additionally, notification handlers are automatically set up for you during our 
 To aid you in optimising your push opt-in workflow, we provide a simple method of getting the user’s current permission state. 
 
 This method will return one of the following states.
-* Default - The application has not yet requested push permissions.		
-* Enabled - The user has enabled push notification for the application.
-* Disabled - The user has disabled push notification for the application.
+* `Default` The application has not yet requested push permissions.		
+* `Enabled` The user has enabled push notification for the application.
+* `Disabled` The user has disabled push notification for the application.
 
 Swift
 ```swift
@@ -126,6 +126,7 @@ Actions are always associated with items that we have ingested.  The item parame
 The item does not need to be ingested before making an action call.  If the item has not been ingested yet, we will buffer the action on our backend end till the item is ingested.  
 
 For example when a user engages with an item
+
 Swift
 ```swift
 String itemId = “somesite.com/someitem”

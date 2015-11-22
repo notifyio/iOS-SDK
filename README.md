@@ -336,11 +336,11 @@ We provide advanced subscription management for users allowing them to opt-in or
 Each user’s subscription state is synced to our backend.  To get a list of notification types and the user’s current subscription state you register handlers with the `registerSubscriptionListHandlers`.  The use of these handlers is explained below. 
 
 * `OnGetSubsListSuccess` is called when the list of notification types has been successfully synced to the device.  The list of notification types is passed to the handler as an array.  Each entry in the array is a dictionary that defines a particular notification type.  The following keys that are defined in the dictionary :
-* `subscription_id` The ID of this notification type
-* `display` The display name of this notification type
-* `desc` The display description of this notification type
-* `value` The user’s subscription state for this notification. true = subscribed, false = unsubscribed 
-* `type` This is for future use, we currently only one type ‘sub’
+  * `subscription_id` The ID of this notification type
+  * `display` The display name of this notification type
+  * `desc` The display description of this notification type
+  * `value` The user’s subscription state for this notification. true = subscribed, false = unsubscribed 
+  * `type` This is for future use, we currently only one type ‘sub’
 
 For example a notification type called “Recommended Items” that the user is currently subscribed to would be represented by:
 ```

@@ -229,13 +229,13 @@ Objective C
 ```
 
 ##3.9 Login
-You should call login as soon as the user is identified (generally after logging in). 
+You should call `loginUser` as soon as the user is identified (generally after logging in). 
 
 Logging in a user, allow you to track users across devices and platforms, improving the quality of recommendations. 
 
-Before calling login, we assign a unique identifier to your users and classify them as anonymous users.  Upon calling login, the anonymous user’s activity history is transferred to the logged in user’s profile.  
+Before calling `loginUser`, we assign a unique identifier to your users and classify them as anonymous users.  Upon calling `loginUser`, the anonymous user’s activity history is transferred to the logged in user’s profile.  
 
-Your userId should be unique and unchanging. 
+Your `userId` should be unique and unchanging. 
 
 Swift
 ```swift
@@ -339,7 +339,7 @@ Each user’s subscription state is synced to our backend.  To get a list of not
   * `subscription_id` The ID of this notification type
   * `display` The display name of this notification type
   * `desc` The display description of this notification type
-  * `value` The user’s subscription state for this notification. true = subscribed, false = unsubscribed 
+  * `value` A `NSString` which represents the user’s subscription state for this notification. "true" = subscribed, "false" = unsubscribed. Note: 
   * `type` This is for future use, we currently only one type ‘sub’
 
 For example a notification type called “Recommended Items” that the user is currently subscribed to would be represented by:
@@ -348,7 +348,7 @@ For example a notification type called “Recommended Items” that the user is 
     “subscription_id” = “recommended_items”;
     “display” = “Recommended Items”;
     “desc” = "Personalized recommendations for you";
-    “value” = true;
+    “value” = "true";
     “type” = “sub”;
 }
 ```

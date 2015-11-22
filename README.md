@@ -318,7 +318,7 @@ Objective C
 ```
 
 ##3.14 How to get the device id
-We generate a DeviceId to uniquely identify each device. To the extent possible, we keep this ID the same through application upgrades. 
+We generate a `DeviceId` to uniquely identify each device. To the extent possible, we keep this ID the same through application upgrades. 
 
 Swift
 ```swift
@@ -339,7 +339,7 @@ Each user’s subscription state is synced to our backend.  To get a list of not
   * `subscription_id` The ID of this notification type
   * `display` The display name of this notification type
   * `desc` The display description of this notification type
-  * `value` A `NSString` which represents the user’s subscription state for this notification. "true" = subscribed, "false" = unsubscribed. Note: 
+  * `value` A `NSString` which represents the user’s subscription state for this notification. "true" = subscribed, "false" = unsubscribed.
   * `type` This is for future use, we currently only one type ‘sub’
 
 For example a notification type called “Recommended Items” that the user is currently subscribed to would be represented by:

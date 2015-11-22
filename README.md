@@ -331,7 +331,7 @@ Objective C
 ```
 
 ##3.17 Notification Subscription Management 
-We provide advanced subscription management for users allowing them to opt-in or opt-out of individual types of notification.  You determing notification types and can include things like product recommendations or trending content. 
+We provide advanced subscription management for users allowing them to opt-in or opt-out of individual types of notifications.
 
 Each user’s subscription state is synced to our backend.  To get a list of notification types and the user’s current subscription state you register handlers with the `registerSubscriptionListHandlers`.  The use of these handlers is explained below. 
 

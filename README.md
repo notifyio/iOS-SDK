@@ -95,9 +95,9 @@ Additionally, notification handlers are automatically set up for you during our 
 To aid you in optimising your push opt-in workflow, we provide a simple method of getting the user’s current permission state. 
 
 This method will return one of the following states.
-* Default - The application has not yet requested push permissions.		
-* Enabled - The user has enabled push notification for the application.
-* Disabled - The user has disabled push notification for the application.
+* `Default` The application has not yet requested push permissions.		
+* `Enabled` The user has enabled push notification for the application.
+* `Disabled` The user has disabled push notification for the application.
 
 Swift
 ```swift
@@ -126,6 +126,7 @@ Actions are always associated with items that we have ingested.  The item parame
 The item does not need to be ingested before making an action call.  If the item has not been ingested yet, we will buffer the action on our backend end till the item is ingested.  
 
 For example when a user engages with an item
+
 Swift
 ```swift
 String itemId = “somesite.com/someitem”
@@ -228,13 +229,13 @@ Objective C
 ```
 
 ##3.9 Login
-You should call login as soon as the user is identified (generally after logging in). 
+You should call `loginUser` as soon as the user is identified (generally after logging in). 
 
 Logging in a user, allow you to track users across devices and platforms, improving the quality of recommendations. 
 
-Before calling login, we assign a unique identifier to your users and classify them as anonymous users.  Upon calling login, the anonymous user’s activity history is transferred to the logged in user’s profile.  
+Before calling `loginUser`, we assign a unique identifier to your users and classify them as anonymous users.  Upon calling `loginUser`, the anonymous user’s activity history is transferred to the logged in user’s profile.  
 
-Your userId should be unique and unchanging. 
+Your `userId` should be unique and unchanging. 
 
 Swift
 ```swift
@@ -247,7 +248,7 @@ Objective C
 ```
 
 ##3.10 Logout
-You will need to tell us when the user logs out of your app.  After logout, our platform defaults to an anonymous user. 
+You will need to tell us when the user logs out of your app.  After `logoutUser`, our platform defaults to an anonymous user. 
 
 You can do that with following: 
 Swift
@@ -278,13 +279,14 @@ Here is an example of setting the user’s email address and gender.
 
 Swift
 ```swift
-let test_dic: [String:String] = ["email":"somename@somedomain.com,”gender”:”female”]
-NotifySwift.getInstance().addUserAttribute(test_dic)
+let attr_dict: [String:String] = ["email":"somename@somedomain.com,”gender”:”female”]
+NotifySwift.getInstance().addUserAttribute(attr_dict)
 ```
 
 Objective C
 ```objectivec
-[[Notify getInstance] addUserAttribute:@{@"email":@"somename@somedomain.com,@”gender”:@”female”}];
+NSDictionary *attr_dict = @{@"email":@"somename@somedomain.com,@”gender”:@”female”}
+[[Notify getInstance] addUserAttribute:attr_dict];
 ```
 
 ##3.12 The user id of the Currently Logged in User
@@ -316,7 +318,7 @@ Objective C
 ```
 
 ##3.14 How to get the device id
-We generate a DeviceId to uniquely identify each device. To the extent possible, we keep this ID the same through application upgrades. 
+We generate a `DeviceId` to uniquely identify each device. To the extent possible, we keep this ID the same through application upgrades. 
 
 Swift
 ```swift
@@ -329,29 +331,28 @@ Objective C
 ```
 
 ##3.17 Notification Subscription Management 
-We provide advanced subscription management for users allowing them to opt-in or opt-out of individual types of notification.  You determing notification types and can include things like product recommendations or trending content. 
+We provide advanced subscription management for users allowing them to opt-in or opt-out of individual types of notifications.
 
 Each user’s subscription state is synced to our backend.  To get a list of notification types and the user’s current subscription state you register handlers with the `registerSubscriptionListHandlers`.  The use of these handlers is explained below. 
 
 * `OnGetSubsListSuccess` is called when the list of notification types has been successfully synced to the device.  The list of notification types is passed to the handler as an array.  Each entry in the array is a dictionary that defines a particular notification type.  The following keys that are defined in the dictionary :
-* `subscription_id` The ID of this notification type
-* `display` The display name of this notification type
-* `desc` The display description of this notification type
-* `value` The user’s subscription state for this notification. true = subscribed, false = unsubscribed 
-* `type` This is for future use, we currently only one type ‘sub’
+  * `subscription_id` The ID of this notification type
+  * `display` The display name of this notification type
+  * `desc` The display description of this notification type
+  * `value` A `NSString` which represents the user’s subscription state for this notification. "true" = subscribed, "false" = unsubscribed.
+  * `type` This is for future use, we currently only one type ‘sub’
 
-For example a notification type called “Recommended Items” that the user is currently subscribed to would be represented by:
-```
-{
-    “subscription_id” = “recommended_items”;
-    “display” = “Recommended Items”;
-    “desc” = "Personalized recommendations for you";
-    “value” = true;
-    “type” = “sub”;
-}
-```
-
-Note: We sync notifications during SDK initialization which will result in the invocation of this handler.  If there was a network error during initialization we’ll continue retrying and this handler will be called as soon as the list is ready. 
+    For example a notification type called “Recommended Items” that the user is currently subscribed to would be represented by:
+    ```
+    {
+        “subscription_id” = “recommended_items”;
+        “display” = “Recommended Items”;
+        “desc” = "Personalized recommendations for you";
+        “value” = true;
+        “type” = “sub”;
+    }
+    ```
+    Note: We sync notifications during SDK initialization which will result in the invocation of this handler.  If there was a network error during initialization we’ll continue retrying and this handler will be called as soon as the list is ready. 
 
 * `OnGetSubsListError` is called when due to network issue or if the notification types have not completed syncing yet.  If this is called we recommend displaying an error message to the user.  We will continue retrying to sync will call the OnSuccess once the sync is complete.  
 
@@ -393,7 +394,7 @@ void onUpdate(NSArray * subsList) {
 }
 ```
 
-You can update an individual subscription setting by calling the setSubscription method, which will also result in the invocation of your onupdate handler.
+You can update an individual subscription setting by calling the `setSubscription` method, which will also result in the invocation of your onupdate handler.
 
 Swift
 ```swift

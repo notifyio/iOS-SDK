@@ -342,18 +342,17 @@ Each user’s subscription state is synced to our backend.  To get a list of not
   * `value` A `NSString` which represents the user’s subscription state for this notification. "true" = subscribed, "false" = unsubscribed.
   * `type` This is for future use, we currently only one type ‘sub’
 
-For example a notification type called “Recommended Items” that the user is currently subscribed to would be represented by:
-```
-{
-    “subscription_id” = “recommended_items”;
-    “display” = “Recommended Items”;
-    “desc” = "Personalized recommendations for you";
-    “value” = "true";
-    “type” = “sub”;
-}
-```
-
-Note: We sync notifications during SDK initialization which will result in the invocation of this handler.  If there was a network error during initialization we’ll continue retrying and this handler will be called as soon as the list is ready. 
+    For example a notification type called “Recommended Items” that the user is currently subscribed to would be represented by:
+    ```
+    {
+        “subscription_id” = “recommended_items”;
+        “display” = “Recommended Items”;
+        “desc” = "Personalized recommendations for you";
+        “value” = true;
+        “type” = “sub”;
+    }
+    ```
+    Note: We sync notifications during SDK initialization which will result in the invocation of this handler.  If there was a network error during initialization we’ll continue retrying and this handler will be called as soon as the list is ready. 
 
 * `OnGetSubsListError` is called when due to network issue or if the notification types have not completed syncing yet.  If this is called we recommend displaying an error message to the user.  We will continue retrying to sync will call the OnSuccess once the sync is complete.  
 
@@ -395,7 +394,7 @@ void onUpdate(NSArray * subsList) {
 }
 ```
 
-You can update an individual subscription setting by calling the setSubscription method, which will also result in the invocation of your onupdate handler.
+You can update an individual subscription setting by calling the `setSubscription` method, which will also result in the invocation of your onupdate handler.
 
 Swift
 ```swift

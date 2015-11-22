@@ -248,7 +248,7 @@ Objective C
 ```
 
 ##3.10 Logout
-You will need to tell us when the user logs out of your app.  After logout, our platform defaults to an anonymous user. 
+You will need to tell us when the user logs out of your app.  After `logoutUser`, our platform defaults to an anonymous user. 
 
 You can do that with following: 
 Swift
